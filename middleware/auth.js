@@ -6,6 +6,8 @@ export default function ({ app, route, store, redirect }) {
     return redirect('/')
   } else if (route.name === 'login') {
     return
+  } else if (route.name === 'register') {
+    return
   }
 
   if (!user || !user.token) {

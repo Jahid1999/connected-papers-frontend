@@ -46,7 +46,7 @@ export default {
     ...mapMutations(['setZero']),
 
     fetchRootFolder() {
-      this.$axios.get(`/folders/0`).then((res) => {
+      this.$axios.get(`users/${this.getUser.id}/folders/0`).then((res) => {
         this.data = res.data
       })
     },

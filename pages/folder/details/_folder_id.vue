@@ -69,9 +69,11 @@ export default {
   },
   methods: {
     fetchFolder() {
-      this.$axios.get(`/folders/${this.folder_id}`).then((res) => {
-        this.data = res.data
-      })
+      this.$axios
+        .get(`users/${this.getUser.id}/folders/${this.folder_id}`)
+        .then((res) => {
+          this.data = res.data
+        })
     },
     getReportURL(query) {
       return `http://127.0.0.1:8000/${query}`

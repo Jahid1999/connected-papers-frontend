@@ -6,7 +6,7 @@
     >
       <h5 class="pt-3 pl-5">Connected Papers</h5>
       <div class="card-body">
-        <d-form class="form-group" @submit.prevent="login">
+        <d-form class="form-group" @submit.prevent="register">
           <div class="input-group input-group-seamless">
             <div class="input-group-prepend">
               <div class="input-group-text">
@@ -14,7 +14,22 @@
               </div>
             </div>
             <d-form-input
-              v-model="loginForm.email"
+              v-model="registerForm.name"
+              class="form-control"
+              type="text"
+              placeholder="your name"
+              required
+            />
+          </div>
+
+          <div class="input-group input-group-seamless mt-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <i class="fa fa-info"></i>
+              </div>
+            </div>
+            <d-form-input
+              v-model="registerForm.email"
               class="form-control"
               type="text"
               placeholder="your-email@example.com"
@@ -29,7 +44,7 @@
               </div>
             </div>
             <d-form-input
-              v-model="loginForm.password"
+              v-model="registerForm.password"
               class="form-control"
               type="password"
               placeholder="Password"
@@ -37,10 +52,10 @@
             />
           </div>
           <d-button type="submit" theme="success" class="mt-2"
-            >Login &rarr;</d-button
+            >Submit &rarr;</d-button
           >
         </d-form>
-        <p>Didn't registered yet? <a href="./register">Register</a></p>
+        <p>Already have an account? <a href="./login">Login</a></p>
       </div>
     </div>
   </d-container>
@@ -49,11 +64,12 @@
 <script>
 import { mapMutations } from 'vuex'
 export default {
-  name: 'Login',
+  name: 'Register',
   layout: 'blank',
   data() {
     return {
-      loginForm: {
+      registerForm: {
+        name: '',
         email: '',
         password: '',
       },
@@ -61,8 +77,8 @@ export default {
   },
   methods: {
     ...mapMutations(['storeUser']),
-    login() {
-      this.$axios.post('users/login', this.loginForm).then((response) => {
+    register() {
+      this.$axios.post('users', this.registerForm).then((response) => {
         // if (response.status === 201) {
         this.storeUser(response.data)
         this.$router.push('/')
