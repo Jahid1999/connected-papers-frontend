@@ -23,7 +23,7 @@ export default function () {
       permission: null,
       htmlBefore: '<i class="bx bx-user"></i>',
       to: {
-        name: 'subject',
+        name: 'shareddocs',
       },
     },
 
