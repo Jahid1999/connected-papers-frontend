@@ -13,7 +13,6 @@ export default {
     const viewer = ref(null)
     onMounted(() => {
       const path = 'http://127.0.0.1:3001/webviewer'
-      console.log(props.initialDoc)
       WebViewer(
         { path, initialDoc: props.initialDoc, extension: 'pdf' },
         viewer.value

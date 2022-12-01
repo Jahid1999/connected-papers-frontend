@@ -29,17 +29,15 @@
     </div>
     <hr />
     <paper-table-vue v-if="data.files" :files="data.files" />
-    <WebviewerVue initial-doc="http://127.0.0.1:8000/api/papers" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import PaperTableVue from '~/components/papers/PaperTable.vue'
-import WebviewerVue from '~/components/Webviewer.vue'
 export default {
   name: 'FolderId',
-  components: { PaperTableVue, WebviewerVue },
+  components: { PaperTableVue },
   data() {
     return {
       folder_id: null,
