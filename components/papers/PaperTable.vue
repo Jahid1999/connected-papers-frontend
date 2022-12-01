@@ -51,8 +51,25 @@
                         params: { paper_id: file.id },
                       })
                     "
-                    >Read</d-button
                   >
+                    <i class="fa fa-eye" aria-hidden="true"></i> Read</d-button
+                  >
+                  <d-button
+                    class="mr-1"
+                    size="sm"
+                    theme="success"
+                    @click="downloadDoc(file.id)"
+                  >
+                    <i class="bx bx-download mr-1"></i>
+                  </d-button>
+                  <d-button
+                    class="mr-1"
+                    size="sm"
+                    theme="danger"
+                    @click="deleteDoc(file.id)"
+                  >
+                    <i class="bx bx-trash mr-1"></i>
+                  </d-button>
                 </d-row>
               </td>
             </tr>
@@ -126,6 +143,16 @@ export default {
             }
           })
         })
+    },
+    downloadDoc(id) {
+      this.$axios
+        .get(`users/${this.getUser.id}/papers/${id}/download`, {})
+        .then((response) => {})
+    },
+    deleteDoc(id) {
+      this.$axios.delete(`papers/${id}`, {}).then((response) => {
+        this.files = this.files.filter((file) => file.id !== id)
+      })
     },
   },
 }
