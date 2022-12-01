@@ -1,4 +1,4 @@
-# School-Grade-Management
+# Connected Papers
 
 ## Build Setup
 
