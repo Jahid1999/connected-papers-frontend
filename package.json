@@ -13,6 +13,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.12.5",
     "@nuxtjs/firebase": "^7.4.1",
+    "@pdftron/webviewer": "^8.10.0",
     "bootstrap": "^4.6.0",
     "core-js": "^3.8.3",
     "firebase": "^8.2.3",

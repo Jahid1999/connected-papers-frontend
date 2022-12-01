@@ -27,7 +27,18 @@
               </td>
               <td>
                 <d-row align-h="center">
-                  <d-button class="mr-1" size="sm" theme="info">Read</d-button>
+                  <d-button
+                    class="mr-1"
+                    size="sm"
+                    theme="info"
+                    @click="
+                      $router.push({
+                        name: 'paper-details-paper_id',
+                        params: { paper_id: file.id },
+                      })
+                    "
+                    >Read</d-button
+                  >
                 </d-row>
               </td>
             </tr>

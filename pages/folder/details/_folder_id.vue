@@ -29,19 +29,23 @@
     </div>
     <hr />
     <paper-table-vue v-if="data.files" :files="data.files" />
+    <WebviewerVue initial-doc="http://127.0.0.1:8000/api/papers" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import PaperTableVue from '~/components/papers/PaperTable.vue'
+import WebviewerVue from '~/components/Webviewer.vue'
 export default {
   name: 'FolderId',
-  components: { PaperTableVue },
+  components: { PaperTableVue, WebviewerVue },
   data() {
     return {
       folder_id: null,
       data: [],
+      publicPath:
+        '/home/abdullah-al-jahid/Desktop/Codes/spl3/public/files/user_1/Smells.pdf',
     }
   },
   computed: {
