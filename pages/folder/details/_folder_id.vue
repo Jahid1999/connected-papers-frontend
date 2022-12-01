@@ -27,33 +27,17 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div v-for="file in data.files" :key="file.id">
-        <div
-          class="card card-small mb-4 mt-2 mr-2"
-          style="cursor: pointer"
-          @click="
-            $router.push({
-              name: 'folder-details-folder_id',
-              params: { folder_id: folder.id },
-            })
-          "
-        >
-          <div class="card-body my-auto">
-            <div class="d-flex">
-              <i class="bx bx-file-pdf mr-2 mt-1"></i> {{ file.name }}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <hr />
+    <paper-table-vue v-if="data.files" :files="data.files" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import PaperTableVue from '~/components/papers/PaperTable.vue'
 export default {
   name: 'FolderId',
+  components: { PaperTableVue },
   data() {
     return {
       folder_id: null,
