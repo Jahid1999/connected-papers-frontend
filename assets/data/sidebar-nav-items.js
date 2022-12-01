@@ -15,7 +15,7 @@ export default function () {
       htmlBefore:
         '<i class="bx bxs-book-content" style="font-size: 1.2rem"></i>',
       to: {
-        name: 'class',
+        name: 'favourites',
       },
     },
     {
