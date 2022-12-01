@@ -7,6 +7,11 @@
         }}</span>
       </div>
     </div>
+    <d-row align-h="end" class="mx-auto">
+      <d-button size="sm" theme="success" @click="addFolderModal = true">
+        <i class="bx bx-plus mr-2"></i><b> Create Folder</b>
+      </d-button>
+    </d-row>
     <div class="row">
       <div v-for="folder in data.folders" :key="folder.id">
         <div
@@ -28,7 +33,62 @@
       </div>
     </div>
     <hr />
+    <d-row align-h="start" class="mx-auto">
+      <d-button size="sm" theme="success" @click="addFileModal = true">
+        <i class="bx bx-plus mr-2"></i><b> Upload File</b>
+      </d-button>
+    </d-row>
     <paper-table-vue v-if="data.files" :files="data.files" />
+
+    <d-modal v-if="addFolderModal" @close="addFolderModal = false">
+      <d-modal-header>
+        <d-modal-title>Create Folder</d-modal-title>
+      </d-modal-header>
+      <d-modal-body>
+        <d-form-input
+          v-model="addFolderForm.name"
+          class="form-control"
+          placeholder="Folder name"
+          required
+          type="text"
+        />
+        <div class="row pb-2 mx-auto mt-2" @click="addFolder">
+          <d-button type="button" outline theme="success">Create</d-button>
+        </div>
+      </d-modal-body>
+    </d-modal>
+    <d-modal v-if="addFileModal" @close="addFileModal = false">
+      <d-modal-header>
+        <d-modal-title>Upload File</d-modal-title>
+      </d-modal-header>
+      <d-modal-body>
+        <d-form-input
+          v-model="addFileForm.name"
+          class="form-control"
+          placeholder="File name"
+          required
+          type="text"
+        />
+        <d-form-input
+          v-model="addFileForm.author"
+          class="form-control mt-2"
+          placeholder="Author"
+          required
+          type="text"
+        />
+        <d-form-input
+          v-model="addFileForm.year"
+          class="form-control mt-2"
+          placeholder="2022"
+          required
+          type="text"
+        />
+        <input id="file" ref="file" type="file" @change="handleFileUpload()" />
+        <div class="row pb-2 mx-auto mt-2" @click="addFile">
+          <d-button type="button" outline theme="success">Upload</d-button>
+        </div>
+      </d-modal-body>
+    </d-modal>
   </div>
 </template>
 
@@ -42,8 +102,22 @@ export default {
     return {
       folder_id: null,
       data: [],
-      publicPath:
-        '/home/abdullah-al-jahid/Desktop/Codes/spl3/public/files/user_1/Smells.pdf',
+      addFolderModal: false,
+      addFolderForm: {
+        name: '',
+        parent_id: null,
+        user_id: null,
+      },
+      addFileModal: false,
+      addFileForm: {
+        name: '',
+        folder_id: null,
+        user_id: null,
+        author: '',
+        year: '',
+        file: null,
+      },
+      file: '',
     }
   },
   computed: {
@@ -61,8 +135,37 @@ export default {
           this.data = res.data
         })
     },
-    getReportURL(query) {
-      return `http://127.0.0.1:8000/${query}`
+    addFolder() {
+      this.addFolderForm.user_id = this.getUser.id
+      this.addFolderForm.parent_id = this.folder_id
+      this.$axios.post(`folders`, this.addFolderForm).then((res) => {
+        this.addFolderModal = false
+        this.fetchFolder()
+      })
+    },
+    handleFileUpload() {
+      this.file = this.$refs.file.files[0]
+    },
+    addFile() {
+      const formData = new FormData()
+
+      formData.append('file', this.file)
+      formData.append('name', this.addFileForm.name)
+      formData.append('folder_id', this.folder_id)
+      formData.append('user_id', this.getUser.id)
+      formData.append('author', this.addFileForm.author)
+      formData.append('year', this.addFileForm.year)
+
+      this.$axios
+        .post(`papers`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then((res) => {
+          this.addFileModal = false
+          this.fetchFolder()
+        })
     },
   },
 }

@@ -15,7 +15,9 @@
       </div>
       <div class="col-md-3">
         <div class="card card-small mb-4 mt-2 mr-2">
-          <div class="card-header text-center"><b>Notes</b></div>
+          <div class="card-header text-center">
+            <b style="font-weight: 900">Notes</b>
+          </div>
           <div class="card-body my-auto">
             {{ note }}
           </div>
@@ -32,7 +34,7 @@
               </d-row>
               <d-row v-else align-h="start" class="mx-auto">
                 <d-button size="sm" theme="primary" @click="initEditNote()">
-                  <i class="bx bx-plus mr-2"></i><b> Edit Note</b>
+                  <i class="bx bx-edit mr-2"></i><b> Edit Note</b>
                 </d-button>
               </d-row>
             </div>
