@@ -36,6 +36,7 @@ export default {
       required: true,
     },
   },
+  // eslint-disable-next-line
   computed: {
     ...mapGetters(['getUser']),
   },

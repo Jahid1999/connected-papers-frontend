@@ -60,7 +60,7 @@
                     theme="success"
                     @click="downloadDoc(file.id)"
                   >
-                    <i class="bx bx-download mr-1"></i>
+                    <i class="bx bx-download"></i>
                   </d-button>
                   <d-button
                     class="mr-1"
@@ -68,7 +68,7 @@
                     theme="danger"
                     @click="deleteDoc(file.id)"
                   >
-                    <i class="bx bx-trash mr-1"></i>
+                    <i class="bx bx-trash" style="font-size: 1.2rem"></i>
                   </d-button>
                 </d-row>
               </td>

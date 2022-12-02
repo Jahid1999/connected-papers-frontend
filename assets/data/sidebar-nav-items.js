@@ -9,11 +9,19 @@ export default function () {
       },
     },
     {
+      title: 'Folders',
+      // permission: 'createClass',
+      permission: null,
+      htmlBefore: '<i class="bx bxs-folder" style="font-size: 1.2rem"></i>',
+      to: {
+        name: 'folder',
+      },
+    },
+    {
       title: 'Favorites',
       // permission: 'createClass',
       permission: null,
-      htmlBefore:
-        '<i class="bx bxs-book-content" style="font-size: 1.2rem"></i>',
+      htmlBefore: '<i class="bx bxs-star" style="font-size: 1.2rem"></i>',
       to: {
         name: 'favourites',
       },
@@ -30,8 +38,7 @@ export default function () {
     {
       title: 'Search Online',
       permission: 'CreateUser',
-      htmlBefore:
-        '<i class="bx bx-message-square-detail" style="font-size: 1.2rem"></i>',
+      htmlBefore: '<i class="bx bx-search" style="font-size: 1.2rem"></i>',
       to: {
         name: 'onlinesearch',
       },
