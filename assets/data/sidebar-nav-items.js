@@ -33,7 +33,7 @@ export default function () {
       htmlBefore:
         '<i class="bx bx-message-square-detail" style="font-size: 1.2rem"></i>',
       to: {
-        name: 'users',
+        name: 'onlinesearch',
       },
     },
   ]
