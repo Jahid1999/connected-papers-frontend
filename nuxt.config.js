@@ -48,6 +48,7 @@ export default {
     '@/plugins/vueSelect',
     '@/plugins/veeValidate',
     '@/plugins/notification',
+    '@/plugins/v-network-graph',
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -80,5 +81,12 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     transpile: ['vee-validate/dist/rules'],
+    extend(config) {
+      config.module.rules.push({
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: 'javascript/auto',
+      })
+    },
   },
 }

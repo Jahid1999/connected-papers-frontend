@@ -70,6 +70,41 @@
                   >
                     <i class="bx bx-trash" style="font-size: 1.2rem"></i>
                   </d-button>
+                  <d-button
+                    v-if="file.has_graph == 1"
+                    class="mr-1"
+                    size="sm"
+                    theme="success"
+                    @click="
+                      $router.push({
+                        name: 'graph-details-file_name',
+                        params: { file_name: file.name },
+                      })
+                    "
+                  >
+                    <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAAXNSR0IArs4c6QAAAa1JREFUSEu9leE1BTEQhb9XASqgBB2gAlSAClABKkAF6IAKUAEdoAJKcL53kj0jb3eTdR7zJ9nNZO7cmZtkxj/Y7B8wmApyAhwAr8Ap8NWS5BSQVeAzBD0CbpcNcgjchKD3wP6yQDZScFk7fwc2AUG2AUvofND6ynUOrAPXqf5mKwsBHA2cR32vgBXgAthKfs5NZm4liFldhpR0NpD9eAF2wuantOYosGwE0x6AvSEQszoOIDkJgbQ8Ojew346aILs9exeYWGszy/QNYpn851opWdXlmmNk80N5fT0pM4yByuaWCbg37+98ayBusISyGLJYyl+BxOaOqVQlCSCzSUwskwrpVDKCoo+ylnUziM6amzu9j1FJApB5qcIFdXkeHlMP7lJ2ldjdcr52VKDq6m6BsvGWyFs2WzwXNTBZZ4EItJY31E68oDKqmQ33prAS2nM4pL3viYF1drQE+WDmekdA/bwhvN9kLRv/OffNmVvLe6JaBLRX1llgA3ykYAYcfVdaQGJ/zgINL0EBq6/jFBDr/hZA/uRlNL7nx+ztTxOL1p7UlFVdn1KuarAhh2/M/V0avfy4SgAAAABJRU5ErkJggg=="
+                    />
+                    ></d-button
+                  >
+                  <d-button
+                    v-if="file.has_graph == 0"
+                    class="mr-1"
+                    size="sm"
+                    theme="warning"
+                    outline
+                    @click="
+                      $router.push({
+                        name: 'graph-details-file_name',
+                        params: { file_name: file.name },
+                      })
+                    "
+                  >
+                    <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAAXNSR0IArs4c6QAAAa1JREFUSEu9leE1BTEQhb9XASqgBB2gAlSAClABKkAF6IAKUAEdoAJKcL53kj0jb3eTdR7zJ9nNZO7cmZtkxj/Y7B8wmApyAhwAr8Ap8NWS5BSQVeAzBD0CbpcNcgjchKD3wP6yQDZScFk7fwc2AUG2AUvofND6ynUOrAPXqf5mKwsBHA2cR32vgBXgAthKfs5NZm4liFldhpR0NpD9eAF2wuantOYosGwE0x6AvSEQszoOIDkJgbQ8Ojew346aILs9exeYWGszy/QNYpn851opWdXlmmNk80N5fT0pM4yByuaWCbg37+98ayBusISyGLJYyl+BxOaOqVQlCSCzSUwskwrpVDKCoo+ylnUziM6amzu9j1FJApB5qcIFdXkeHlMP7lJ2ldjdcr52VKDq6m6BsvGWyFs2WzwXNTBZZ4EItJY31E68oDKqmQ33prAS2nM4pL3viYF1drQE+WDmekdA/bwhvN9kLRv/OffNmVvLe6JaBLRX1llgA3ykYAYcfVdaQGJ/zgINL0EBq6/jFBDr/hZA/uRlNL7nx+ztTxOL1p7UlFVdn1KuarAhh2/M/V0avfy4SgAAAABJRU5ErkJggg=="
+                    />
+                    ></d-button
+                  >
                 </d-row>
               </td>
             </tr>
