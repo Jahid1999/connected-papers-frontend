@@ -90,6 +90,14 @@
           type="file"
           @change="handleFileUpload()"
         />
+        <div>
+          <label style="font-size: 1rem; color: black"
+            >Make this file publicly available</label
+          >
+          <d-checkbox v-model="addFileForm.is_public" inline toggle>
+          </d-checkbox>
+        </div>
+
         <div class="row pb-2 mx-auto mt-2" @click="addFile">
           <d-button type="button" outline theme="success">Upload</d-button>
         </div>
@@ -122,6 +130,7 @@ export default {
         author: '',
         year: '',
         file: null,
+        is_public: false,
       },
       file: '',
     }
@@ -161,6 +170,7 @@ export default {
       formData.append('user_id', this.getUser.id)
       formData.append('author', this.addFileForm.author)
       formData.append('year', this.addFileForm.year)
+      formData.append('is_public', this.addFileForm.is_public)
 
       this.$axios
         .post(`papers`, formData, {

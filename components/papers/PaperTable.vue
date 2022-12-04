@@ -73,6 +73,7 @@
                     <i class="bx bx-download"></i>
                   </d-button>
                   <d-button
+                    v-if="!isFromPublic"
                     class="mr-1"
                     size="sm"
                     theme="danger"
@@ -167,6 +168,10 @@ export default {
     files: {
       type: Array,
       required: true,
+    },
+    isFromPublic: {
+      type: Boolean,
+      required: false,
     },
   },
   data() {

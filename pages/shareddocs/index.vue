@@ -7,7 +7,7 @@
         >
       </div>
     </div>
-    <paper-table-vue v-if="papers" :files="papers" />
+    <paper-table-vue v-if="papers" :files="papers" :is-from-public="true" />
   </div>
 </template>
 
