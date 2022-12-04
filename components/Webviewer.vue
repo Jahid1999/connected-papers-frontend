@@ -7,6 +7,7 @@ import WebViewer from '@pdftron/webviewer'
 export default {
   name: 'WebViewer',
   props: {
+    // eslint-disable-next-line
     initialDoc: String,
   },
   setup(props) {

@@ -40,6 +40,7 @@ export default {
   computed: {
     ...mapGetters(['getUser']),
   },
+  // eslint-disable-next-line
   data() {
     return {
       addNoteModal: false,

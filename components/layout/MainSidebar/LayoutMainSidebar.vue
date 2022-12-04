@@ -57,6 +57,7 @@
             ]"
             :to="item.to"
           >
+            <!-- eslint-disable vue/no-v-html -->
             <div
               v-if="item.htmlBefore"
               class="item-icon-wrapper"
@@ -160,16 +161,18 @@ export default {
       // msg_count: 0,
     }
   },
+  computed: {
+    ...mapGetters(['getUser', 'getCount']),
+  },
   created() {
     this.$nuxt.$on('toggle-sidebar', this.handleToggleSidebar)
   },
+
   beforeDestroy() {
     clearInterval(this.interval)
     this.$nuxt.$on('toggle-sidebar')
   },
-  computed: {
-    ...mapGetters(['getUser', 'getCount']),
-  },
+
   // mounted() {
   //   this.msgSchedular()
   // },

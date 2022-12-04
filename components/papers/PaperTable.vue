@@ -184,7 +184,6 @@ export default {
     ...mapGetters(['getUser']),
   },
   watch: {
-    // whenever question changes, this function will run
     query(newQuery, oldQuery) {
       if (newQuery === '') this.files = this.filteredData
       else
