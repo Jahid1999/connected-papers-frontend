@@ -76,7 +76,10 @@
                     class="mr-1"
                     size="sm"
                     theme="danger"
-                    @click="deleteDoc(file.id)"
+                    @click="
+                      deleteFileModal = true
+                      fileToDelete = file.id
+                    "
                   >
                     <i class="bx bx-trash" style="font-size: 1.2rem"></i>
                   </d-button>
@@ -141,6 +144,17 @@
         />
       </template>
     </VueAdsPagination>
+    <d-modal v-if="deleteFileModal" @close="deleteFileModal = false">
+      <d-modal-header style="background-color: red">
+        <d-modal-title>Delete File</d-modal-title>
+      </d-modal-header>
+      <d-modal-body>
+        <p>Do you want to delete the file?</p>
+        <div class="row pb-2 mx-auto mt-2" @click="deleteDoc()">
+          <d-button type="button" outline theme="danger">Delete</d-button>
+        </div>
+      </d-modal-body>
+    </d-modal>
   </d-container>
 </template>
 
@@ -162,7 +176,12 @@ export default {
       totalRows: 0,
       query: '',
       filteredData: [],
+      deleteFileModal: false,
+      fileToDelete: null,
     }
+  },
+  computed: {
+    ...mapGetters(['getUser']),
   },
   watch: {
     // whenever question changes, this function will run
@@ -179,9 +198,6 @@ export default {
   },
   mounted() {
     this.filteredData = this.files
-  },
-  computed: {
-    ...mapGetters(['getUser']),
   },
   methods: {
     ...mapMutations(['storeUser']),
@@ -212,9 +228,10 @@ export default {
         .get(`users/${this.getUser.id}/papers/${id}/download`, {})
         .then((response) => {})
     },
-    deleteDoc(id) {
-      this.$axios.delete(`papers/${id}`, {}).then((response) => {
-        this.files = this.files.filter((file) => file.id !== id)
+    deleteDoc() {
+      this.$axios.delete(`papers/${this.fileToDelete}`, {}).then((response) => {
+        this.files = this.files.filter((file) => file.id !== this.fileToDelete)
+        this.deleteFileModal = false
       })
     },
   },

@@ -83,7 +83,13 @@
           required
           type="text"
         />
-        <input id="file" ref="file" type="file" @change="handleFileUpload()" />
+        <input
+          id="file"
+          ref="file"
+          class="mt-2"
+          type="file"
+          @change="handleFileUpload()"
+        />
         <div class="row pb-2 mx-auto mt-2" @click="addFile">
           <d-button type="button" outline theme="success">Upload</d-button>
         </div>

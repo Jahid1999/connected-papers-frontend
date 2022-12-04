@@ -110,6 +110,9 @@
                   type="password"
                 />
               </div>
+              <div v-if="!password_matched" class="px-2">
+                <p style="color: red">Password did't match!</p>
+              </div>
               <div class="row pb-2 ml-2">
                 <d-button theme="danger" type="submit"
                   >Change Password</d-button
@@ -143,11 +146,45 @@ export default {
         confirm_password: '',
         email: '',
       },
+      password_matched: true,
     }
   },
   computed: {
     ...mapGetters(['getUser']),
   },
+  watch: {
+    'changePasswordForm.password'() {
+      if (
+        this.changePasswordForm.password &&
+        this.changePasswordForm.confirm_password
+      ) {
+        if (
+          this.changePasswordForm.password !==
+          this.changePasswordForm.confirm_password
+        ) {
+          this.password_matched = false
+        } else {
+          this.password_matched = true
+        }
+      }
+    },
+    'changePasswordForm.confirm_password'() {
+      if (
+        this.changePasswordForm.password &&
+        this.changePasswordForm.confirm_password
+      ) {
+        if (
+          this.changePasswordForm.password !==
+          this.changePasswordForm.confirm_password
+        ) {
+          this.password_matched = false
+        } else {
+          this.password_matched = true
+        }
+      }
+    },
+  },
+
   mounted() {
     this.fetchUserByid()
   },

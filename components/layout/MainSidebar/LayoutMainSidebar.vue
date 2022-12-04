@@ -26,6 +26,13 @@
             <!--              src="/images/bhl.png"-->
             <!--              alt="SGM Dashboard"-->
             <!--            />-->
+            <img
+              id="main-logo"
+              class="d-inline-block align-top mr-1"
+              style="max-width: 25px"
+              src="/images/connection.png"
+            />
+
             <span v-if="!hideLogoText" class="d-none d-md-inline ml-1"
               >Connected Papers</span
             >
