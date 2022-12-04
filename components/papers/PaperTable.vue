@@ -1,5 +1,15 @@
 <template>
   <d-container>
+    <d-row class="px-3 pt-2">
+      <d-input-group>
+        <d-input-group-addon prepend>
+          <d-btn theme="secondary" disabled
+            ><i class="bx bxs-search" style="font-size: 1.2rem"></i
+          ></d-btn>
+        </d-input-group-addon>
+        <d-input v-model="query" placeholder="Enter Search Query" />
+      </d-input-group>
+    </d-row>
     <div class="card card-small mb-4 mt-2">
       <div class="card-body p-0 pb-3 text-center">
         <table class="table mb-0">
@@ -150,7 +160,25 @@ export default {
       currentPage: 1,
       perPage: 5,
       totalRows: 0,
+      query: '',
+      filteredData: [],
     }
+  },
+  watch: {
+    // whenever question changes, this function will run
+    query(newQuery, oldQuery) {
+      if (newQuery === '') this.files = this.filteredData
+      else
+        this.files = this.filteredData.filter((file) => {
+          return (
+            file.name.toLowerCase().includes(newQuery.toLowerCase()) ||
+            file.author.toLowerCase().includes(newQuery.toLowerCase())
+          )
+        })
+    },
+  },
+  mounted() {
+    this.filteredData = this.files
   },
   computed: {
     ...mapGetters(['getUser']),
