@@ -67,7 +67,7 @@
                   <d-button
                     class="mr-1"
                     size="sm"
-                    theme="success"
+                    theme="primary"
                     @click="downloadDoc(file.id)"
                   >
                     <i class="bx bx-download"></i>

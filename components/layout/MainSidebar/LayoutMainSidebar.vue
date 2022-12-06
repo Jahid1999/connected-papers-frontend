@@ -115,19 +115,6 @@
             <span>Logout</span>
           </div>
         </li>
-        <li class="nav-item dropdown">
-          <div style="cursor: pointer">
-            <d-alert
-              dismissible
-              :show="timeUntilDismissed"
-              theme="info"
-              @alert-dismissed="timeUntilDismissed = 0"
-              @alert-dismiss-countdown="handleTimeChange"
-            >
-              <b>New Message</b>
-            </d-alert>
-          </div>
-        </li>
       </d-nav>
     </div>
   </aside>
